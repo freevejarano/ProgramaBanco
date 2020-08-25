@@ -37,7 +37,7 @@ public class Operacion {
         }
     }
 
-    public boolean comprarConTarjeta(Tarjeta ta, Cuenta empresa, int cuotas, int valor){
+    public boolean comprarConTarjeta(Tarjeta ta, Cuenta empresa, int cuotas, double valor){
         if(ta.getEstado()=="Activa"&&ta.getTipo()=="TarjetaCredito"){
             double actual=ta.getSaldo();
             if(actual>=valor){
@@ -71,16 +71,20 @@ public class Operacion {
         return gasto;
     }
 
-    public boolean pagarTarjetaCredito(Tarjeta ta, int valor){
+    public boolean pagarTarjetaCredito(Tarjeta ta, double valor){
         if(ta.getEstado()=="Activa"&&ta.getTipo()=="TarjetaCredito") {
             if(ta.getDeuda()>0){
-                if(ta.getDeuda()>valor){
+                if(ta.getDeuda()>=valor){
                     ta.setDeuda(ta.getDeuda()-valor);
                 }else{
-                    
+                    valor-=ta.getDeuda();
+                    ta.setDeuda(0);
+                    ta.setSaldo(ta.getSaldo()+valor);
                 }
+                return true;
             }else{
                 ta.setSaldo(ta.getSaldo()+valor);
+                return true;
             }
         }
             return false;

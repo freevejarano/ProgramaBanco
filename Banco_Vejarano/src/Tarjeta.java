@@ -1,31 +1,31 @@
 public class Tarjeta extends Producto {
-    int cupo, gasto, deuda;
+    double cupo, gasto, deuda;
     public Tarjeta(Cliente cli, int numero, String tipo, String estado, int saldo, int cupo) {
         super(cli, numero, tipo, estado, saldo);
         this.cupo=cupo;
     }
 
-    public int getDeuda() {
+    public double getDeuda() {
         return deuda;
     }
 
-    public void setDeuda(int deuda) {
+    public void setDeuda(double deuda) {
         this.deuda = deuda;
     }
 
-    public int getGasto() {
+    public double getGasto() {
         return gasto;
     }
 
-    public void setGasto(int gasto) {
+    public void setGasto(double gasto) {
         this.gasto = gasto;
     }
 
-    public int getCupo() {
+    public double getCupo() {
         return cupo;
     }
 
-    public void setCupo(int cupo) {
+    public void setCupo(double cupo) {
         this.cupo = cupo;
     }
 }
