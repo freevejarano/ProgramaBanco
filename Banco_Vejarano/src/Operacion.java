@@ -42,23 +42,33 @@ public class Operacion {
             double actual=ta.getSaldo();
             if(actual>=valor){
                 ta.setSaldo(ta.getSaldo()-valor);
+                ta.setGasto(ta.getGasto()+valor);
                 empresa.setSaldo(empresa.getSaldo()-valor);
                 return true;
             }else if(ta.getCupo()>=valor){
                 ta.setCupo(ta.getCupo()-valor);
                 empresa.setSaldo(empresa.getSaldo()-valor);
+                return true;
             }else{return false;}
         }
-        return false;
     }
 
-    public double consultarCupo(Tarjeta ta){
+    public double consultarCupoTCredito(Tarjeta ta){
         double cupo=0;
         if(ta.getEstado()=="Activa"){
             cupo=ta.getCupo();
         }
         return cupo;
     }
+
+    public double consultarGastoTCredito(Tarjeta ta){
+        double gasto=0;
+        if(ta.getEstado()=="Activa"){
+            gasto=ta.getGasto();
+        }
+        return gasto;
+    }
+
 
 
 
