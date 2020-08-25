@@ -52,9 +52,12 @@ public class Operacion {
         return false;
     }
 
-    public boolean consultarCupo(Tarjeta ta){
-
-        return false;
+    public double consultarCupo(Tarjeta ta){
+        double cupo=0;
+        if(ta.getEstado()=="Activa"){
+            cupo=ta.getCupo();
+        }
+        return cupo;
     }
 
 
