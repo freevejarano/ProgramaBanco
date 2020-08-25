@@ -1,32 +1,54 @@
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-class OperacionTest {
+public class OperacionTest {
+    Operacion op= new Operacion();
+    Cliente cli= new Cliente(1000547,"Pedro Perez");
+    Cuenta cuenta= new Cuenta(cli,4785,"CuentaAhorros","Activa",15000);
+    Cuenta empresa= new Cuenta(new Cliente(1,"Pagos"),185,"CuentaCoriente","Activa",740000);
+    Tarjeta credito= new Tarjeta(cli,7841,"TarjetaCredito","Activa",45000,80000);
+    Prestamo prestamo= new Prestamo(cli,2123,"CuotaFija","Activa",35000);
 
-    @org.junit.jupiter.api.Test
-    void consignarEnCuenta() {
+    @Test
+    public void consignarEnCuenta() {
+        boolean ans= op.consignarEnCuenta(cuenta,25000);
+        assertEquals(true,ans);
     }
 
-    @org.junit.jupiter.api.Test
-    void retirarDinero() {
+    @Test
+    public void retirarDinero() {
+        boolean ans= op.retirarDinero(cuenta,10000);
+        assertEquals(true,ans);
     }
 
-    @org.junit.jupiter.api.Test
-    void transferirACuenta() {
+    @Test
+    public void transferirACuenta() {
+        boolean ans= op.transferirACuenta(cuenta, empresa, 7412);
+        assertEquals(true,ans);
     }
 
-    @org.junit.jupiter.api.Test
-    void comprarConTarjeta() {
+    @Test
+    public void comprarConTarjeta() {
+        boolean ans= op.comprarConTarjeta(credito, empresa, 2, 30000);
+        assertEquals(true,ans);
     }
 
-    @org.junit.jupiter.api.Test
-    void consultarCupoTCredito() {
+    @Test
+    public void consultarCupoTCredito() {
+        double ans= op.consultarCupoTCredito(credito);
+        assertEquals(80000,ans,0);
     }
 
-    @org.junit.jupiter.api.Test
-    void consultarGastoTCredito() {
+    @Test
+    public void consultarGastoTCredito() {
+        op.comprarConTarjeta(credito, empresa, 2, 30000);
+        double ans= op.consultarGastoTCredito(credito);
+        assertEquals(30000,ans,0);
     }
 
-    @org.junit.jupiter.api.Test
-    void pagarTarjetaCredito() {
+    @Test
+    public void pagarTarjetaCredito() {
+        boolean ans= op.pagarTarjetaCredito(credito, 32000);
+        assertEquals(true,ans);
     }
 }

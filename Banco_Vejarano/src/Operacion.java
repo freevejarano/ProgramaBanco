@@ -1,5 +1,4 @@
 public class Operacion {
-    Cliente cl;
 
 
     public boolean consignarEnCuenta(Cuenta p, int valor){
