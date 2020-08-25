@@ -8,20 +8,12 @@ public class main {
 
         int resp = JOptionPane.showConfirmDialog(null, "¿Ya está registrado?", "Registro", JOptionPane.YES_NO_OPTION);
 
-        Cliente cli;
-        if(resp==0){
-            cli= new Cliente();
-        }else{
-            int dni = Integer.parseInt(JOptionPane.showInputDialog("Digite su cédula"));
-            String nombre = JOptionPane.showInputDialog("Digite su nombre");
-            cli= new Cliente(dni,nombre);
-        }
+        Cliente cli= new Cliente(1000547,"Pedro Perez");
+        Cuenta cuenta= new Cuenta(cli,4785,"CuentaAhorros","Activa",15000);
+        Tarjeta credito= new Tarjeta(cli,7841,"TarjetaCredito","Activa",45000,80000);
+        Prestamo prestamo= new Prestamo(cli,2123,"CuotaFija","Activa",35000)
 
-        String[] options = {"Consignar en cuenta", "Retirar Dinero", "Consultar Saldo", "Transferir",
-                "Comprar con Tarjeta", "Consultar Cupo T.Crédito", "Consultar Gasto T.Crédito", "Pagar T.Crédito"};
-
-        int seleccion = JOptionPane.showOptionDialog(null, "Es necesario que seleccione una opcion", "Titulo", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,   null, options, options[0]);
-
+                
     }
 
 

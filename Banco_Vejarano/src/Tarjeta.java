@@ -1,6 +1,6 @@
 public class Tarjeta extends Producto {
     double cupo, gasto, deuda;
-    public Tarjeta(Cliente cli, int numero, String tipo, String estado, int saldo, int cupo) {
+    public Tarjeta(Cliente cli, int numero, String tipo, String estado, double saldo, int cupo) {
         super(cli, numero, tipo, estado, saldo);
         this.cupo=cupo;
     }
