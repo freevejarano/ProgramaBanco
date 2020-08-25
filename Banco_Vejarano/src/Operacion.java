@@ -43,6 +43,7 @@ public class Operacion {
             if(actual>=valor){
                 ta.setSaldo(ta.getSaldo()-valor);
                 ta.setGasto(ta.getGasto()+valor);
+                ta.setDeuda(ta.getDeuda()+valor);
                 empresa.setSaldo(empresa.getSaldo()-valor);
                 return true;
             }else if(ta.getCupo()>=valor){
@@ -71,8 +72,18 @@ public class Operacion {
     }
 
     public boolean pagarTarjetaCredito(Tarjeta ta, int valor){
-
-        return false;
+        if(ta.getEstado()=="Activa"&&ta.getTipo()=="TarjetaCredito") {
+            if(ta.getDeuda()>0){
+                if(ta.getDeuda()>valor){
+                    ta.setDeuda(ta.getDeuda()-valor);
+                }else{
+                    
+                }
+            }else{
+                ta.setSaldo(ta.getSaldo()+valor);
+            }
+        }
+            return false;
     }
 
 
