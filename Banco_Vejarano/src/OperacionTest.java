@@ -29,7 +29,7 @@ public class OperacionTest {
 
     @Test
     public void comprarConTarjeta() {
-        boolean ans= op.comprarConTarjeta(credito, empresa, 2, 30000);
+        boolean ans= op.comprarConTarjeta(credito, empresa, 30000);
         assertEquals(true,ans);
     }
 
@@ -41,7 +41,7 @@ public class OperacionTest {
 
     @Test
     public void consultarGastoTCredito() {
-        op.comprarConTarjeta(credito, empresa, 2, 30000);
+        op.comprarConTarjeta(credito, empresa, 30000);
         double ans= op.consultarGastoTCredito(credito);
         assertEquals(30000,ans,0);
     }
